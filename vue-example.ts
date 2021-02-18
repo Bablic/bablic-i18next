@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import i18next from 'i18next';
 import VueI18Next from '@panter/vue-i18next';
-import {BablicI18next, BablicPostProcessor} from "./bablic-i18next";
+import {BablicI18next, BablicPostProcessor} from "./src/bablic-i18next";
 
 Vue.use(VueI18Next);
 
