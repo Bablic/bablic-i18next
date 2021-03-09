@@ -10,9 +10,9 @@ interface HttpApiPrivateApi extends HttpApi {
 }
 
 let cacheBreaker = "";
-export function isInEditor() {
+export function isInEditor(): boolean {
     try {
-        return (window as any).bablic.preprocessI18nItem;
+        return !!(window as any).bablic.preprocessI18nItem;
     } catch (e) {
         return false;
     }
