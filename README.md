@@ -3,31 +3,25 @@ import Vue from 'vue'
 import App from './App.vue'
 import i18next from 'i18next';
 import VueI18Next from '@panter/vue-i18next';
-import {BablicI18next, BablicPostProcessor} from "bablic-i18next";
+import {BablicI18next, isInEditor, BablicPostProcessor} from "bablic-i18next";
 
 Vue.use(VueI18Next);
 
 Vue.config.productionTip = false;
 
+const getCurrentLanguage = () => 
+    // get language from according to app logic (URL / Cookie / Local Storage / Default)
+    'es';
 
 i18next
     .use(BablicI18next)
     .use(BablicPostProcessor)
     .init({
         saveMissing: true,
-        // missingKeyHandler: BablicI18next.missingKeyHandler,
-        // parseMissingKeyHandler: BablicI18next.parseMissingKeyHandler,
-        lng: 'es',
+        lng: isInEditor() ? 'dev' : getCurrentLanguage(),
         load: "currentOnly",
         preload: false,
-        // resources: {
-        //   es: {
-        //       translation: {
-        //           hello: "Hola",
-        //           world: "Mundo",
-        //       }
-        //   }
-        // },
+        postProcess: BablicPostProcessor.name,
         backend: {
             siteId: "602e5f38f33547000176d342",
             isDebug: false,
