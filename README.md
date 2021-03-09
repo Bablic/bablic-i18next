@@ -10,7 +10,7 @@ Vue.use(VueI18Next);
 Vue.config.productionTip = false;
 
 const getCurrentLanguage = () => 
-    // get language from according to app logic (URL / Cookie / Local Storage / Default)
+    // get language according to app logic (URL / Cookie / Local Storage / Default)
     'es';
 
 i18next
