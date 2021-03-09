@@ -119,20 +119,13 @@ export class BablicI18next extends (HttpApi as { new(): HttpApiPrivateApi }) {
     }
 }
 
-export class BablicPostProcessor implements PostProcessorModule {
-    // static type = "postProcessor";
-    // type = "postProcessor";
-    name: "BablicPostProcessor" = "BablicPostProcessor";
-    type: "postProcessor" = "postProcessor";
-    static type: "postProcessor" = "postProcessor";
-
-    process(value: any, key: any, options: any, translator: any) {
+export const BablicPostProcessor: PostProcessorModule = {
+    name: "BablicPostProcessor",
+    type: "postProcessor",
+    process: (value: any, key: any, options: any, translator: any) => {
         if (isInEditor())
             return (window as any).bablic.preprocessI18nItem(key, value);
         /* return manipulated value */
         return value;
-    }
-
-}
-
-BablicPostProcessor.type = "postProcessor";
+    },
+};
